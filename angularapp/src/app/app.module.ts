@@ -5,26 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminappliedloanComponent } from './admin/adminappliedloan/adminappliedloan.component';
 import { AdminapprovedloanComponent } from './admin/adminapprovedloan/adminapprovedloan.component';
-import { AdminHomePageComponent } from './admin/admin-home-page/admin-home-page.component';
-import { EditLoanComponent } from './admin/edit-loan/edit-loan.component';
 import { DeleteLoanComponent } from './admin/delete-loan/delete-loan.component';
-import { EditRepaymentScheduleComponent } from './admin/edit-repayment-schedule/edit-repayment-schedule.component';
 import { DeleteRepaymentScheduleComponent } from './admin/delete-repayment-schedule/delete-repayment-schedule.component';
+import { EditLoanComponent } from './admin/edit-loan/edit-loan.component';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { AdminhomepageComponent } from './admin/adminhomepage/adminhomepage.component';
 import { GenerateScheduleComponent } from './admin/generate-schedule/generate-schedule.component';
-import { LogOutComponent } from './log-out/log-out.component';
+import { EditRepaymentScheduleComponent } from './admin/edit-repayment-loan/edit-repayment-loan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminappliedloanComponent,
     AdminapprovedloanComponent,
-    AdminHomePageComponent,
-    EditLoanComponent,
     DeleteLoanComponent,
-    EditRepaymentScheduleComponent,
     DeleteRepaymentScheduleComponent,
+    EditLoanComponent,
+    EditRepaymentLoanComponent,
     GenerateScheduleComponent,
-    LogOutComponent
+    LoginComponent,
+    UserComponent,
+    AdminhomepageComponent,
+    
   ],
   imports: [
     BrowserModule,

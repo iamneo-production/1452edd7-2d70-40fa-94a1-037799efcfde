@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminapprovedloanComponent } from '../adminapprovedloan/adminapprovedloan.component';
+import { AdminAppliedLoanService } from '../admin-applied-loan.service';
+import { AdminModel } from '../admin-model';
 
 @Component({
   selector: 'app-delete-loan',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteLoanComponent implements OnInit {
 
-  constructor() { }
+  public admindata:AdminModel[]=[];
 
+  constructor(private router:Router,private adminService:AdminAppliedLoanService,private status:AdminapprovedloanComponent,private route:ActivatedRoute) { }
+   loanId:any=null;
   ngOnInit(): void {
+    this.getappliedLoans();
+    this.loanId=this.route.snapshot.params['id'];
+  }
+  public getappliedLoans()
+{
+  this.adminService.appliedLoan().subscribe(data=>{
+    this.admindata=data;
+  });
+  console.log(this.loanId);
+}
+  public cancel()
+  {
+    this.router.navigate(['/admin/adminapprovedloan']);
+  }
+  public conform(id:number)
+  {
+    this.adminService.deleteloan(id).subscribe(data=>{
+      this.getappliedLoans();
+    });
   }
 
 }
