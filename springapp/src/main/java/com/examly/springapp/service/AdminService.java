@@ -51,7 +51,22 @@ public class AdminService {
 		AdminModel user=adminRepository.save(userobj);
 		return ResponseEntity.ok(user);
 	}
-	
+	//for editing the LOAN 
+	public ResponseEntity<AdminModel> editLoan(int id,AdminModel repaymentUser)
+	{
+		AdminModel repaymentuser=adminRepository.getById(id);
+		repaymentuser.setApplicantName(repaymentUser.getApplicantName());
+		repaymentuser.setApplicantAadhar(repaymentUser.getApplicantAadhar());
+		repaymentuser.setApplicantAddress(repaymentUser.getApplicantAddress());
+		repaymentuser.setApplicantEmail(repaymentUser.getApplicantEmail());
+		repaymentuser.setApplicantPan(repaymentUser.getApplicantPan());
+		repaymentuser.setApplicantPhone(repaymentUser.getApplicantPhone());
+		repaymentuser.setApplicantSalary(repaymentUser.getApplicantSalary());
+		repaymentuser.setLoanAmountRequired(repaymentUser.getLoanAmountRequired());
+		repaymentuser.setLoanRepaymentMonths(repaymentUser.getLoanRepaymentMonths());
+		AdminModel user=adminRepository.save(repaymentuser);
+		return ResponseEntity.ok(user);
+	}
 	//for editing the repayment schedule
 	public ResponseEntity<AdminModel> editRepaymentSchedule(int id,AdminModel repaymentUser)
 	{
