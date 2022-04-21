@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserServiceService } from 'src/app/user-service.service';
 import { AdminAppliedLoanService } from '../admin-applied-loan.service';
 
 @Component({
@@ -10,17 +9,18 @@ import { AdminAppliedLoanService } from '../admin-applied-loan.service';
 })
 export class GenerateScheduleComponent implements OnInit {
   emiData!:number;
-
-  constructor(private sharedservice:UserServiceService,private router:Router,private adminService:AdminAppliedLoanService) 
-  { 
-    this.emiData=this.sharedservice.getEmi();
-    console.log(this.emiData);
+  msg:any;
+  constructor(private router:Router,private adminService:AdminAppliedLoanService) 
+  {  
+    this.emiData=this.adminService.getEmi();
   }
-
   ngOnInit(): void {
   }
   conform()
   {
+    this.adminService.generateSchedule(this.emiData).subscribe(data=>{
+      this.msg=data;
+     });
   window.alert("The Schedule has been Successfully Genearted");
   this.cancel();
   }

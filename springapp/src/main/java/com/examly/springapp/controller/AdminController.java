@@ -29,7 +29,12 @@ public class AdminController {
 	{
 		return (List<AdminModel>) adminservice.approvedLoan();
 	}
-	
+	//for edit LOAN
+	@PutMapping("/editLoan/{id}") 
+	public ResponseEntity<AdminModel> editLoan(@PathVariable int id,@RequestBody AdminModel repaymentUser)
+	{
+		return adminservice.editLoan(id, repaymentUser);	
+	}
 	//for getting findById
 	@GetMapping("/deleteLoan/{id}")
 	public ResponseEntity<AdminModel> getById(@PathVariable int id)

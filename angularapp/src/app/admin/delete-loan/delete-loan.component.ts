@@ -35,6 +35,8 @@ export class DeleteLoanComponent implements OnInit {
     this.adminService.deleteloan(id).subscribe(data=>{
       this.getappliedLoans();
     });
+    window.alert("You have deleted the Loan "+id+" Successfully");
+    this.router.navigate(['/admin/adminapprovedloan']);
   }
 
 }

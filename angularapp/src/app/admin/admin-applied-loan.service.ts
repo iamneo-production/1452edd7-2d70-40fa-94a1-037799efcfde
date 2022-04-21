@@ -7,8 +7,9 @@ import { AdminModel } from './admin-model';
   providedIn: 'root'
 })
 export class AdminAppliedLoanService {
-  
+  emiID!:number;
   private baseURL="https://8080-dcadabebddbacefbdfdddddfcfcccadbbff.examlyiopb.examly.io/"
+  private editloan=this.baseURL+"admin/generateSchedule"
   private getAllLoans=this.baseURL+"admin/getAllLoans"
   private delete=this.baseURL+"admin/deleteLoan"
   private emi=this.baseURL+"admin/generateSchedule"
@@ -16,13 +17,18 @@ export class AdminAppliedLoanService {
   private reject=this.baseURL+"admin/editStatusR"
   private EditRepayment=this.baseURL+"admin/editRepaymentSchedule"
   private deletePayment=this.baseURL+"admin/deleteRepaymentSchedule"
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient,private router:Router) { 
   }
   //for applied loans
   appliedLoan():Observable<AdminModel[]>
   {
     return this.http.get<AdminModel[]>(`${this.getAllLoans}`);
   } 
+  //for edit Loan
+  editLoan(id:any,statusById:AdminModel):Observable<Object>
+  {
+    return this.http.put(`${this.editloan}/${id}`,statusById);
+  }
   //for deleting the loan
   deleteloan(id:Number):Observable<Object>
   {
@@ -57,5 +63,15 @@ export class AdminAppliedLoanService {
   deletePaymentSchedule(id:any,deleteSchedule:AdminModel):Observable<object>
   {
     return this.http.put(`${this.deletePayment}/${id}`,deleteSchedule);
+  }
+  //for emi sharing
+  public setEmi(emi:any)
+  {
+      this.emiID=emi;
+      this.router.navigate(['/admin/generateSchedule']); 
+  }
+  public getEmi()
+  {
+      return this.emiID;
   }
 }
