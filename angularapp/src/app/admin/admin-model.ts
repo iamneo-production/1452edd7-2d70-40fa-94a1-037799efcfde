@@ -10,5 +10,5 @@ export class AdminModel {
 	loanAmountRequired:any;
 	loanRepaymentMonths:any;
 	emi:any;
-	 status:any;
+	status:any;
 }
