@@ -33,7 +33,7 @@ export class DeleteRepaymentScheduleComponent implements OnInit {
    this.adminservice.deletePaymentSchedule(t.applicantLoanId,t).subscribe(data=>
     this.src=data);
     console.log(this.src);
-   window.alert("Delete Schedule for "+this.loanId);
+   window.alert("Schedule for "+this.loanId+" Deleted Successfully");
    this.router.navigate(['/admin/adminapprovedloan']);
   }
 }

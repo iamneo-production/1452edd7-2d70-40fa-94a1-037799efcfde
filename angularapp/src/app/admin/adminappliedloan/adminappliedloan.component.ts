@@ -22,11 +22,13 @@ export class AdminappliedloanComponent implements OnInit {
   {
      this.adminappliedloan.editStatusA(t.applicantLoanId,t).subscribe(data=>
       this.src=data);
+      window.location.reload();
   }
   rejectLoan(t:any)
   {
     this.adminappliedloan.editStatusR(t.applicantLoanId,t).subscribe(data=>
       this.src=data);
+      window.location.reload();
   }
   private appliedloan()
   {

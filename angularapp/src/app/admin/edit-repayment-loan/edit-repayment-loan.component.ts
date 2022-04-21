@@ -30,7 +30,7 @@ onSubmit(t:any)
       this.adminservice.editRepayment(t.applicantLoanId,t).subscribe(data=>
         this.src=data);
         console.log(this.src);
-      window.alert("Updated the edit Repayment Schedule for "+this.loanId);
+      window.alert("Updated the edit Repayment Schedule for "+this.loanId+" Successfully DONE !!");
       this.route.navigate(['/admin/adminapprovedloan']);
 }
 cancel()

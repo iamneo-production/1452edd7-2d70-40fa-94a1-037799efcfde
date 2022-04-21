@@ -50,9 +50,7 @@ public getappliedLoans()
   //for generating schedule
   generateEmi(id:number)
   {
-    this.adminappliedloan.generateSchedule(id).subscribe(data=>{
-     this.msg=data;
-    });
+    this.adminappliedloan.setEmi(id);
   }
   //for editing the repayment Schedule
   editRepaymentLoan(id:number)
